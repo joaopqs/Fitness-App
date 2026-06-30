@@ -8,6 +8,23 @@
 <body class="bg-light">
     <div class="container mt-5">
         <h2 class="mb-4">Meu Estoque de Suplementos</h2>
+        <form action="index.php?action=criar" method="POST" class="mb-4 row g-3 bg-white p-3 shadow-sm rounded">
+            <div class="col-md-3">
+                <input type="text" name="nome" class="form-control" placeholder="Suplemento" required>
+            </div>
+            <div class="col-md-3">
+                <input type="text" name="marca" class="form-control" placeholder="Marca" required>
+            </div>
+            <div class="col-md-2">
+                <input type="number" name="peso_total_gramas" class="form-control" placeholder="Peso Total (g)" required>
+            </div>
+            <div class="col-md-2">
+                <input type="number" name="dose_diaria_gramas" class="form-control" placeholder="Dose (g)" required>
+            </div>
+            <div class="col-md-2">
+                <button type="submit" class="btn btn-success w-100">Adicionar</button>
+            </div>
+        </form>
         <table class="table table-bordered bg-white shadow-sm">
             <thead class="table-dark">
                 <tr>
@@ -30,6 +47,7 @@
                                 onclick="calcularDias(<?= $sup['peso_total_gramas'] ?>, <?= $sup['dose_diaria_gramas'] ?>)">
                             Calcular Dias Restantes
                         </button>
+                        <a href="index.php?action=excluir&id=<?= $sup['id'] ?>" class="btn btn-sm btn-danger" onclick="return confirm('Tem certeza?')">Excluir</a>
                     </td>
                 </tr>
                 <?php endforeach; ?>
