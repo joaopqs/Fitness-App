@@ -47,6 +47,7 @@
                                 onclick="calcularDias(<?= $sup['peso_total_gramas'] ?>, <?= $sup['dose_diaria_gramas'] ?>)">
                             Calcular Dias Restantes
                         </button>
+                        <a href="index.php?action=editar&id=<?= $sup['id'] ?>" class="btn btn-sm btn-warning">Editar</a>
                         <a href="index.php?action=excluir&id=<?= $sup['id'] ?>" class="btn btn-sm btn-danger" onclick="return confirm('Tem certeza?')">Excluir</a>
                     </td>
                 </tr>

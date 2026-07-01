@@ -34,5 +34,29 @@ class SuplementoController {
         $suplemento->deletar($id);
         header("Location: index.php");
     }
+
+    public function editar($id) {
+        $database = new Database();
+        $db = $database->getConnection();
+        $suplemento = new Suplemento($db);
+        
+        $dados = $suplemento->buscarPorId($id);
+        if ($dados) {
+            require_once 'views/editar.php';
+        } else {
+            header("Location: index.php");
+        }
+    }
+
+    public function atualizar() {
+        if ($_SERVER['REQUEST_METHOD'] == 'POST') {
+            $database = new Database();
+            $db = $database->getConnection();
+            $suplemento = new Suplemento($db);
+            
+            $suplemento->atualizar($_POST['id'], $_POST['nome'], $_POST['marca'], $_POST['peso_total_gramas'], $_POST['dose_diaria_gramas']);
+            header("Location: index.php");
+        }
+    }
 }
 ?>
